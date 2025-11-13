@@ -1,4 +1,5 @@
 import express from 'express'
+import { Request, Response } from 'express'
 import cors from 'cors'
 import { createServer } from 'http'
 import { Server } from 'socket.io'
@@ -106,7 +107,7 @@ app.use(cors({
 }))
 
 // Health Check
-app.get('/health', (req, res) => {
+app.get('/health', (req: Request, res: Response) => {
   res.json({ 
     status: 'Socket.IO Server Online',
     connections: io.engine.clientsCount,
@@ -114,7 +115,7 @@ app.get('/health', (req, res) => {
   })
 })
 
-app.get('/', (req, res) => {
+app.get('/', (req: Request, res: Response) => {
   res.json({
     message: 'HelpDesk Socket.IO Server',
     status: 'running',
