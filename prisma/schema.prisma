@@ -1,5 +1,7 @@
 generator client {
     provider = "prisma-client-js"
+    output   = "../node_modules/.prisma/client"
+    runtime             = "nodejs"
 }
 
 datasource db {
@@ -97,7 +99,7 @@ model ChatMessage {
     id         String   @id @default(uuid()) @db.Uuid
     ticketId   Int
     senderId   String   @db.Uuid
-    senderType String   // 'funcionario' ou 'admin'
+    senderType String // 'funcionario' ou 'admin'
     message    String
     createdAt  DateTime @default(now())
     ticket     Ticket   @relation(fields: [ticketId], references: [id])
